@@ -23,7 +23,7 @@ public class CycleinDirectedGraph {
         path[i] = 1;
 
         for ( int adj : graph[i]){
-            if (vis[i] != 1){
+            if (vis[adj] != 1){
                 if (dfs(graph, vis,path, adj) == true){
                     return true;
                 };
@@ -31,6 +31,7 @@ public class CycleinDirectedGraph {
                 return true;
             }
         }
+        path[i] = 0;
         return false;
     }
 }

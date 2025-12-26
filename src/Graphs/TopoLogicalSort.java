@@ -1,8 +1,6 @@
 package Graphs;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class TopoLogicalSort {
     public static void main(String[] args) {
@@ -33,5 +31,35 @@ public class TopoLogicalSort {
             stack.push(it);
         }
 
+    }
+    public List<Integer> topobfs(List<List<Integer>> adj, int v){
+        int [] indeg = new int [v];
+        Queue<Integer> queue = new LinkedList<>();
+        List<Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < v; i++){
+            for (int it : adj.get(i)){
+                indeg[it] = indeg[it] + 1;
+
+            }
+        }
+        for (int i = 0; i < v; i++){
+            if (indeg[i] == 0){
+                queue.add(i);
+            }
+        }
+
+        while (!queue.isEmpty()){
+            int ver = queue.poll();
+            ans.add(ver);
+            for (int it : adj.get(ver)){
+                indeg[it] = indeg[it]-1;
+                if (indeg[it] == 0){
+                    queue.add(it);
+                }
+            }
+
+        }
+        return ans;
     }
 }
