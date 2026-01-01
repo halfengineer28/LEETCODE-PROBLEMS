@@ -40,7 +40,7 @@ public class DijkstrasAlgorithm {
        // mark src of dis to zero;
        dis[src] = 0;
        // priority queue for dijkstra to check minimum distance from src to each node;
-       PriorityQueue<Pair> pq = new PriorityQueue<>();
+       PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> a.second- b.second);
        pq.add(new Pair(src, 0));
        while (!pq.isEmpty()){
            Pair pair = pq.poll();
