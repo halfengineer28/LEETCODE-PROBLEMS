@@ -1,5 +1,7 @@
 package POTD;
 
+import java.util.List;
+
 public class ConstructtheMinimumBitwiseArrayI {
     public int[] minBitwiseArray(List<Integer> nums) {
         int[] result = new int[nums.size()];
